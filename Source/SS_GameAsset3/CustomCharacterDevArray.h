@@ -7,6 +7,7 @@
 #include "Runtime/Engine/Classes/Camera/CameraComponent.h"
 #include "Runtime/Engine/Classes/Components/CapsuleComponent.h"
 #include "CustomCharacterDevArray.h"
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "CustomCharacterDevArray.generated.h"
 
 UCLASS()
@@ -38,10 +39,14 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category=Checks)
+	UPROPERTY(VisibleAnywhere,BlueprintReadWrite, Category=Checks)
 	bool bIsJumping;
 
-	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category=Checks)
+	UPROPERTY(VisibleAnywhere,BlueprintReadWrite, Category=Checks)
 	bool bIsCrouching;
+
+	UFUNCTION(BlueprintImplementableEvent, Category=Functions)
+	FRotator GetControlRotation_Rep();
+	
 
 };
