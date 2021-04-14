@@ -21,6 +21,12 @@ ASS_GameAsset3Character::ASS_GameAsset3Character()
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
 
+	// Camera boom values initialized
+	FirstPersonCameraBoomDistance = 0.0f;
+	ThirdPersonCameraBoomDistance = 300.0f;
+	FirstPersonOffset = FVector(0.0f,3.5f,69.0f);
+	ThirdPersonOffset = FVector(0.0f,0.0f,0.0f);
+
 	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
@@ -35,13 +41,20 @@ ASS_GameAsset3Character::ASS_GameAsset3Character()
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 300.0f; // The camera follows at this distance behind the character	
+	
+	//(Third person target arm length usually is at 300.0f)
+	CameraBoom->TargetArmLength = FirstPersonCameraBoomDistance; // The camera follows at this distance behind the character
+	// all these should be 0 when in third person else it should equal FirstPersonOffset
+	CameraBoom->SocketOffset = FirstPersonOffset;
+	
 	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
 	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+	
+	firstPerson = true;
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
@@ -74,6 +87,11 @@ void ASS_GameAsset3Character::SetupPlayerInputComponent(class UInputComponent* P
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ASS_GameAsset3Character::OnResetVR);
+	
+	//InputComponent->BindAxis("Zooming", this, &ASS_GameAsset3Character::Zooming);
+
+	//InputComponent->BindAction("ChangeCamera", IE_Pressed, this, &ASS_GameAsset3Character::Switch);
+
 }
 
 

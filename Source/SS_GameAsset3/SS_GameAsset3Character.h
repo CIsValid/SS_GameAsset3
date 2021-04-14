@@ -18,8 +18,17 @@ class ASS_GameAsset3Character : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
+
 public:
 	ASS_GameAsset3Character();
+	
+	// First person camera socket offset :)
+	UPROPERTY(EditAnywhere, Category=Camera)
+	FVector FirstPersonOffset;
+
+	// Third person camera socket offset :)
+	UPROPERTY(EditAnywhere, Category=Camera)
+	FVector ThirdPersonOffset;
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
@@ -28,6 +37,17 @@ public:
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
+	
+	/** First Person Camera boom distance */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	float FirstPersonCameraBoomDistance;
+
+	/** Third Person Camera boom distance */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	float ThirdPersonCameraBoomDistance;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	bool firstPerson;
 
 protected:
 
