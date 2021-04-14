@@ -30,12 +30,6 @@ protected:
 	void MoveRight(float Value);
 	void CheckJump();
 	void CheckCrouch();
-
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category=Checks)
-	bool bIsJumping;
-
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category=Checks)
-	bool bIsCrouching;
 	
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
@@ -43,5 +37,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category=Checks)
+	bool bIsJumping;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category=Checks)
+	bool bIsCrouching;
+
 };

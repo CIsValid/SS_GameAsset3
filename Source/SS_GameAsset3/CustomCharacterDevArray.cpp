@@ -2,6 +2,8 @@
 
 #include "CustomCharacterDevArray.h"
 
+#include "GameFramework/CharacterMovementComponent.h"
+
 // Sets default values
 ACustomCharacterDevArray::ACustomCharacterDevArray()
 {
@@ -9,17 +11,19 @@ ACustomCharacterDevArray::ACustomCharacterDevArray()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Just setting the default for the collision capsule
-	GetCapsuleComponent()->InitCapsuleSize(55.0f,96.0f);
+	GetCapsuleComponent()->InitCapsuleSize(30.0f,96.0f);
 
 	// Create camera components
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	CameraComponent->SetupAttachment(GetCapsuleComponent());
-	CameraComponent->SetRelativeLocation(FVector(-39.56f, 1.75f, 64.0f));
+	CameraComponent->SetRelativeLocation(FVector(23.987591f, 10.89999f, 73.0f));
+	CameraComponent->SetRelativeScale3D(FVector(0.3f,0.3f,0.3f));
 	CameraComponent->bUsePawnControlRotation = true;
-
+	
 	bIsJumping = false;
 	bIsCrouching = false;
-
+	GetCharacterMovement()->AirControl = 1.0f;
+    GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch = true;
 }
 
 // Called when the game starts or when spawned
@@ -35,7 +39,7 @@ void ACustomCharacterDevArray::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	if(bIsJumping){ Jump(); }
-	if(bIsCrouching){ Crouch(); }
+	bIsCrouching ? Crouch() : UnCrouch();
 }
 
 void ACustomCharacterDevArray::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
