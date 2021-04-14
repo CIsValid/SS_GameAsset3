@@ -27,8 +27,16 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera, meta = (AllowPrivateAccess = "true"))
+	float BaseTurnRate;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera, meta = (AllowPrivateAccess = "true"))
+	float BaseLookUpRate;
+
 	void MoveForward(float Value);
 	void MoveRight(float Value);
+	void TurnAtRate(float Rate);
+	void LookUpAtRate(float Rate);
 	void CheckJump();
 	void CheckCrouch();
 	
@@ -45,7 +53,7 @@ public:
 	UPROPERTY(VisibleAnywhere,BlueprintReadWrite, Category=Checks)
 	bool bIsCrouching;
 
-	UFUNCTION(BlueprintImplementableEvent, Category=Functions)
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category=Functions)
 	FRotator GetControlRotation_Rep();
 	
 

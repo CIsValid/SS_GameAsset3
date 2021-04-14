@@ -19,11 +19,18 @@ ACustomCharacterDevArray::ACustomCharacterDevArray()
 	CameraComponent->SetRelativeLocation(FVector(23.987591f, 10.89999f, 73.0f));
 	CameraComponent->SetRelativeScale3D(FVector(0.3f,0.3f,0.3f));
 	CameraComponent->bUsePawnControlRotation = true;
+
+	BaseTurnRate = 65.0f;
+	BaseLookUpRate = 65.0f;
 	
 	bIsJumping = false;
 	bIsCrouching = false;
 	GetCharacterMovement()->AirControl = 1.0f;
     GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch = true;
+
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationRoll = false;
 }
 
 // Called when the game starts or when spawned
@@ -57,8 +64,8 @@ void ACustomCharacterDevArray::SetupPlayerInputComponent(UInputComponent* Player
 	PlayerInputComponent->BindAction("Crouch", IE_Released, this, &ACustomCharacterDevArray::CheckCrouch);
 	
 	// Mouse axis bindings
-	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("LookUp", this, &ACustomCharacterDevArray::LookUpAtRate);
+	PlayerInputComponent->BindAxis("Turn", this, &ACustomCharacterDevArray::TurnAtRate);
 }
 
 void ACustomCharacterDevArray::MoveForward(float Value)
@@ -75,6 +82,17 @@ void ACustomCharacterDevArray::MoveRight(float Value)
 	{
 		AddMovementInput(GetActorRightVector(),Value);
 	}
+}
+
+void ACustomCharacterDevArray::TurnAtRate(float Rate)
+{
+	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
+}
+
+void ACustomCharacterDevArray::LookUpAtRate(float Rate)
+{
+	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
+
 }
 
 void ACustomCharacterDevArray::CheckJump()
