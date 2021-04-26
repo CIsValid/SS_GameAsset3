@@ -20,6 +20,9 @@ ACustomCharacterDevArray::ACustomCharacterDevArray()
 	CameraComponent->SetRelativeScale3D(FVector(0.3f,0.3f,0.3f));
 	CameraComponent->bUsePawnControlRotation = true;
 
+	//Testing 420.0f default
+	GetCharacterMovement()->JumpZVelocity = 410.0f;
+
 	BaseTurnRate = 65.0f;
 	BaseLookUpRate = 65.0f;
 	
