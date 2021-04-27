@@ -23,7 +23,6 @@ public:
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category=Camera,meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComponent;
 
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -54,8 +53,7 @@ public:
 	UPROPERTY(VisibleAnywhere,BlueprintReadWrite, Category=Checks)
 	bool bIsCrouching;
 
-	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category=Functions)
-	FRotator GetControlRotation_Rep();
+	UPROPERTY(VisibleAnywhere,BlueprintReadWrite, Category=Checks)
+	bool bIsSprinting;
 	
-
 };
