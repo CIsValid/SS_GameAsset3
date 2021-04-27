@@ -3,6 +3,7 @@
 #include "CustomCharacterDevArray.h"
 
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
 ACustomCharacterDevArray::ACustomCharacterDevArray()

@@ -23,6 +23,7 @@ public:
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category=Camera,meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComponent;
 
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
