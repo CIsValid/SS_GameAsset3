@@ -53,8 +53,7 @@ public:
 	UPROPERTY(VisibleAnywhere,BlueprintReadWrite, Category=Checks)
 	bool bIsCrouching;
 
-	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category=Functions)
-	FRotator GetControlRotation_Rep();
+	UPROPERTY(VisibleAnywhere,BlueprintReadWrite, Category=Checks)
+	bool bIsSprinting;
 	
-
 };
