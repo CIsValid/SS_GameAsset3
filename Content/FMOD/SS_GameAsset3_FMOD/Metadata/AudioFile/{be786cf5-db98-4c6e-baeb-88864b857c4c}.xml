@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{be786cf5-db98-4c6e-baeb-88864b857c4c}">
+		<property name="assetPath">
+			<value>Voicelines/Jace/Bye (1).wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.4744671201814059</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{4e60e48e-21d7-4838-b434-5081f7711d0a}</destination>
+		</relationship>
+	</object>
+</objects>

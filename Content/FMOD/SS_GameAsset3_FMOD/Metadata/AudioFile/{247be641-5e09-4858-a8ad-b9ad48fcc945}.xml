@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{247be641-5e09-4858-a8ad-b9ad48fcc945}">
+		<property name="assetPath">
+			<value>Voicelines/Nicole/Bye.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.92879818594104313</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{4e60e48e-21d7-4838-b434-5081f7711d0a}</destination>
+		</relationship>
+	</object>
+</objects>
