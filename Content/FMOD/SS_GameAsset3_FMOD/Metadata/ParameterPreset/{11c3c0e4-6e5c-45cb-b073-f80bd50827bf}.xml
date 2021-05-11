@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{11c3c0e4-6e5c-45cb-b073-f80bd50827bf}">
+		<property name="name">
+			<value>shotgunReloadLoop</value>
+		</property>
+		<relationship name="folder">
+			<destination>{88d379f7-f8ec-46c5-9ae7-f4e4567c3427}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{c595ddfb-693f-466a-8abb-e17c3a240c74}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{c595ddfb-693f-466a-8abb-e17c3a240c74}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
