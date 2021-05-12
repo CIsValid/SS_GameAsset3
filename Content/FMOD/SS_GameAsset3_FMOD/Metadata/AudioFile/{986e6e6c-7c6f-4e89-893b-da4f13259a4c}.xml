@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{986e6e6c-7c6f-4e89-893b-da4f13259a4c}">
+		<property name="assetPath">
+			<value>Enviroment/13 BEST Power Down SFX - Sound Effect.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>53.21142857142857</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{4e60e48e-21d7-4838-b434-5081f7711d0a}</destination>
+		</relationship>
+	</object>
+</objects>
